@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sayhello.gd" type="Script" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 50.0
+margin_left = 235.0
+margin_top = 123.0
+margin_right = 823.0
+margin_bottom = 428.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 207.971
+margin_top = 106.802
+margin_right = 362.971
+margin_bottom = 172.802
+text = "Text"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel"]
+margin_left = 250.492
+margin_top = 195.38
+margin_right = 318.492
+margin_bottom = 227.38
+text = "Button"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="Panel"]
+visible = true
+margin_left = 242.27
+margin_top = 32.5596
+margin_right = 325.27
+margin_bottom = 90.5596
+window_title = "User Died!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
