@@ -56,7 +56,7 @@ func _on_DoneButton_pressed():
 	print("game settings")
 	print(GameSettings.masterVolume)
 	print(GameSettings.musicVolume)
-	get_tree().change_scene("res://MainMenu.tscn")
+	get_tree().change_scene("res://scenes/menu/MainMenu.tscn")
 
 
 #func _on_VolumeSlider_gui_input(event, name: String):

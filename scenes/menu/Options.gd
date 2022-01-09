@@ -14,7 +14,7 @@ func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			print("Options has been clicked D:")
-			get_tree().change_scene("res://MainOptionsMenu.tscn")
+			get_tree().change_scene("res://scenes/menu/MainOptionsMenu.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

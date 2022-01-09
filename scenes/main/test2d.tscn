@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://sayhello.gd" type="Script" id=1]
-[ext_resource path="res://Ghost_Animation2.png" type="Texture" id=2]
-[ext_resource path="res://Ghost_Animation1.png" type="Texture" id=3]
-[ext_resource path="res://ghost.gd" type="Script" id=4]
+[ext_resource path="res://scenes/gameplay/player/Ghost_Animation1.png" type="Texture" id=1]
+[ext_resource path="res://scenes/gameplay/player/ghost.gd" type="Script" id=2]
+[ext_resource path="res://scenes/gameplay/player/Ghost_Animation2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/main/sayhello.gd" type="Script" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "move",
 "speed": 2.5
@@ -25,7 +25,7 @@ margin_left = 235.0
 margin_top = 123.0
 margin_right = 823.0
 margin_bottom = 428.0
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -61,13 +61,14 @@ __meta__ = {
 }
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="Panel"]
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Panel/KinematicBody2D"]
 position = Vector2( 96.2548, 166.407 )
 scale = Vector2( 0.0767951, 0.0723638 )
 frames = SubResource( 1 )
 animation = "move"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/KinematicBody2D"]

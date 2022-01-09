@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Ghost_Animation1.png-0011ba5e691286ee71063187ed432d6c.stex"
+path="res://.import/Ghost_Animation2.png-d1f4103d08bdbb755c35784439bdbc8d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ghost_Animation1.png"
-dest_files=[ "res://.import/Ghost_Animation1.png-0011ba5e691286ee71063187ed432d6c.stex" ]
+source_file="res://scenes/gameplay/player/Ghost_Animation2.png"
+dest_files=[ "res://.import/Ghost_Animation2.png-d1f4103d08bdbb755c35784439bdbc8d.stex" ]
 
 [params]
 
