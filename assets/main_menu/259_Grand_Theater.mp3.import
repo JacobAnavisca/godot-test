@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/259_Grand_Theater.mp3-94186f5f84c974d82251e3b87c100aa1.mp3str"
+
+[deps]
+
+source_file="res://assets/main_menu/259_Grand_Theater.mp3"
+dest_files=[ "res://.import/259_Grand_Theater.mp3-94186f5f84c974d82251e3b87c100aa1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

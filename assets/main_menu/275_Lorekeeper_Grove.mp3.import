@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/275_Lorekeeper_Grove.mp3-5679c4527e68c202d4cf1bf168226d54.mp3str"
+
+[deps]
+
+source_file="res://assets/main_menu/275_Lorekeeper_Grove.mp3"
+dest_files=[ "res://.import/275_Lorekeeper_Grove.mp3-5679c4527e68c202d4cf1bf168226d54.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

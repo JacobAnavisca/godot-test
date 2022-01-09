@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sayhello.gd" type="Script" id=1]
+[ext_resource path="res://Ghost_Animation2.png" type="Texture" id=2]
+[ext_resource path="res://Ghost_Animation1.png" type="Texture" id=3]
+[ext_resource path="res://ghost.gd" type="Script" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "move",
+"speed": 2.5
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 47.9312
+height = 49.85
 
 [node name="Node2D" type="Node2D"]
 
@@ -44,3 +59,17 @@ window_title = "User Died!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Panel"]
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Panel/KinematicBody2D"]
+position = Vector2( 96.2548, 166.407 )
+scale = Vector2( 0.0767951, 0.0723638 )
+frames = SubResource( 1 )
+animation = "move"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/KinematicBody2D"]
+position = Vector2( 101.585, 170.562 )
+shape = SubResource( 2 )
