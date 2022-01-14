@@ -11,7 +11,9 @@ phases:
   build:
     commands:
       - mkdir -p /opt/
-      - curl -s -L -o godot_headless.zip -C - https://downloads.tuxfamily.org/godotengine/$godot_version/Godot_v$godot_version-stable_linux_headless.64.zip unzip godot_headless.zip -d /opt/ && rm -f godot_headless.zip
+      - curl -s -L -o godot_headless.zip -C - https://downloads.tuxfamily.org/godotengine/$godot_version/Godot_v$godot_version-stable_linux_headless.64.zip
+      - unzip godot_headless.zip -d /opt/
+      - rm -f godot_headless.zip
       - ln -s /opt/Godot_v$godot_version-stable_linux_headless.64.zip /usr/local/bin/godot
       - godot --export "Linux/X11" /var/builds/project
 artifacts:
