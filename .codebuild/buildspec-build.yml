@@ -20,6 +20,8 @@ phases:
       - curl -s -L -o godot_export_templates.zip -C - https://downloads.tuxfamily.org/godotengine/$godot_version/Godot_v$godot_version-stable_export_templates.tpz
       - unzip godot_export_templates.zip -d /root/.local/share/godot/
       - rm -f godot_export_templates.zip
+      - mkdir -p /root/.local/share/godot/templates/$godot_version.stable/
+      - mv /root/.local/share/godot/templates/* /root/.local/share/godot/templates/$godot_version.stable
       - godot --export "Linux/X11" /var/builds/project
 artifacts:
   files:
