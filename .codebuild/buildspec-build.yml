@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - pip3 install gdtoolkit
+      - apt-get update -qq && apt-get install -y -qq curl unzip software-properties-common ca-certificates sudo zip
+  pre_build:
+    commands:
+      - gdlint scenes/menu/NewGame.gd
+  build:
+    commands:
+      - mkdir -p /opt/
+      - curl -s -L -o godot_headless.zip -C - https://downloads.tuxfamily.org/godotengine/$godot_version/Godot_v$godot_version-stable_linux_headless.64.zip unzip godot_headless.zip -d /opt/ && rm -f godot_headless.zip
+      - ln -s /opt/Godot_v$godot_version-stable_linux_headless.64.zip /usr/local/bin/godot
+      - godot --export "Linux/X11" /var/builds/project
+  artifacts:
+    files:
+      - '/var/builds/project/*'
+    name: project-$(date +%Y-%m-%d)
