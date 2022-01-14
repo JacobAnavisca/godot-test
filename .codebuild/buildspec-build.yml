@@ -15,6 +15,7 @@ phases:
       - unzip godot_headless.zip -d /opt/
       - rm -f godot_headless.zip
       - ln -s /opt/Godot_v$godot_version-stable_linux_headless.64.zip /usr/local/bin/godot
+      - mkdir -p /var/builds/project
       - godot --export "Linux/X11" /var/builds/project
 artifacts:
   files:
