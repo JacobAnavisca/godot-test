@@ -16,12 +16,12 @@ phases:
       - rm -f godot_headless.zip
       - ln -s /opt/Godot_v$godot_version-stable_linux_headless.64 /usr/local/bin/godot
       - mkdir -p /var/builds/project
-      - mkdir -p /root/.local/share/godot/
-      - curl -s -L -o godot_export_templates.zip -C - https://downloads.tuxfamily.org/godotengine/$godot_version/Godot_v$godot_version-stable_export_templates.tpz
-      - unzip godot_export_templates.zip -d /root/.local/share/godot/
-      - rm -f godot_export_templates.zip
       - mkdir -p /root/.local/share/godot/templates/$godot_version.stable/
-      - mv /root/.local/share/godot/templates/* /root/.local/share/godot/templates/$godot_version.stable
+      - mkdir -p /root/.local/share/godot-copy/
+      - curl -s -L -o godot_export_templates.zip -C - https://downloads.tuxfamily.org/godotengine/$godot_version/Godot_v$godot_version-stable_export_templates.tpz
+      - unzip godot_export_templates.zip -d /root/.local/share/godot-copy/
+      - rm -f godot_export_templates.zip
+      - mv /root/.local/share/godot-copy/templates/* /root/.local/share/godot/templates/$godot_version.stable
       - godot --export "Linux/X11" /var/builds/project
 artifacts:
   files:
