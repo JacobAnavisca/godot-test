@@ -23,7 +23,10 @@ func get_input():
 	else:
 		_animated_sprite.stop()
 	velocity = velocity.normalized() * speed
-	
+
+# gdlint: disable=unused-argument
 func _physics_process(delta):
+	# do nothing with delta
 	get_input()
 	velocity = move_and_slide(velocity)
+# gdlint: enable=unused-argument

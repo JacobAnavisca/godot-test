@@ -34,7 +34,7 @@ func _physics_process(delta):
 		$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
-		
+
 	if velocity.x != 0:
 		$AnimatedSprite.flip_v = false
 		# See the note below about boolean assignment

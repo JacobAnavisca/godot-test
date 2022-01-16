@@ -1,11 +1,11 @@
 extends Node
 
-signal userDied
+signal user_died
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var playerName: String = 'User'
-var playerHealth: int = 100 setget setHealth
+var player_name: String = 'User'
+var player_health: int = 100 setget set_health
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,17 +16,17 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func setHealth(value):
-	playerHealth = value
+func set_health(value):
+	player_health = value
 
-	if playerHealth <= 0:
-		playerHealth = 100
-		emit_signal("userDied")
+	if player_health <= 0:
+		player_health = 100
+		emit_signal("user_died")
 
 func save_game():
 	var save_dict = {
-		"playerName" : playerName,
-		"playerHealth" : playerHealth
+		"PlayerName" : player_name,
+		"PlayerHealth" : player_health
 	}
 
 	var save_game = File.new()
@@ -42,7 +42,7 @@ func load_game():
 	save_game.open("user://savegame.save", File.READ)
 	var save_dict = save_game.get_var(true)
 
-	playerName = save_dict.playerName
-	playerHealth = save_dict.playerHealth
+	player_name = save_dict.PlayerName
+	player_health = save_dict.PlayerHealth
 
 	save_game.close()

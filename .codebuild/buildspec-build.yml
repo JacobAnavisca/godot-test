@@ -1,29 +1,45 @@
 version: 0.2
 
+batch:
+  build-list:
+    - identifier: "Linux/X11"
+      env:
+        variables:
+          GODOT_VERSION: "3.4.2"
+          EXPORT_TYPE: "Linux/X11"
+          EXPORT_FILE_NAME: "test.x86_64"
+    - identifier: "Mac OSX"
+      env:
+        variables:
+          GODOT_VERSION: "3.4.2"
+          EXPORT_TYPE: "Mac OSX"
+          EXPORT_FILE_NAME: "test.zip"
+    # - identifier: "Android"
+    #   env:
+    #     variables:
+    #       GODOT_VERSION: "3.4.2"
+    #       EXPORT_TYPE: "Android"
+    #       EXPORT_FILE_NAME: "android_debug.apk"
+
+# env:
+#   variables:
+#     GODOT_VERSION: "3.4.2"
+
 phases:
   install:
     commands:
-      - pip3 install gdtoolkit
-      - apt-get update -qq && apt-get install -y -qq curl unzip software-properties-common ca-certificates sudo zip
+      - .build-scripts/install_deps.sh
   pre_build:
     commands:
-      - gdlint scenes/menu/NewGame.gd
+      - .build-scripts/lint.sh
   build:
     commands:
-      - mkdir -p /opt/
-      - curl -s -L -o godot_headless.zip -C - https://downloads.tuxfamily.org/godotengine/$godot_version/Godot_v$godot_version-stable_linux_headless.64.zip
-      - unzip godot_headless.zip -d /opt/
-      - rm -f godot_headless.zip
-      - ln -s /opt/Godot_v$godot_version-stable_linux_headless.64 /usr/local/bin/godot
-      - mkdir -p /var/builds/project
-      - mkdir -p /root/.local/share/godot/templates/$godot_version.stable/
-      - mkdir -p /root/.local/share/godot-copy/
-      - curl -s -L -o godot_export_templates.zip -C - https://downloads.tuxfamily.org/godotengine/$godot_version/Godot_v$godot_version-stable_export_templates.tpz
-      - unzip godot_export_templates.zip -d /root/.local/share/godot-copy/
-      - rm -f godot_export_templates.zip
-      - mv /root/.local/share/godot-copy/templates/* /root/.local/share/godot/templates/$godot_version.stable
-      - godot --export "Linux/X11" /var/builds/project
+      - .build-scripts/init_godot.sh
+      - mkdir -v -m 777 -p /root/var/builds/
+      - godot -v --export $EXPORT_TYPE ~/var/builds/$EXPORT_FILE_NAME
+
 artifacts:
   files:
-    - '/var/builds/project/*'
+    - '/root/var/builds/*'
   name: project-$(date +%Y-%m-%d)
+  discard-paths: yes

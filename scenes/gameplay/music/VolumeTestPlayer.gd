@@ -1,5 +1,8 @@
 extends MarginContainer
 
+var master_slider_load_changed := false
+var music_slider_load_changed := false
+
 onready var _master_bus := AudioServer.get_bus_index("Master")
 onready var _music_bus := AudioServer.get_bus_index("Music")
 
@@ -10,17 +13,14 @@ onready var _master_stream: AudioStream = preload("res://assets/main_menu/master
 onready var _music_stream: AudioStream = preload("res://assets/main_menu/music.mp3")
 onready var _test_player: AudioStreamPlayer = $VolumeTestPlayer
 
-var master_slider_load_changed := false
-var music_slider_load_changed := false
-
 func _ready() -> void:
 	print("game settings")
-	print(GameSettings.masterVolume)
-	print(GameSettings.musicVolume)
-	_master_slider.value = GameSettings.masterVolume
-	_music_slider.value = GameSettings.musicVolume
-	AudioServer.set_bus_volume_db(_master_bus, linear2db(GameSettings.masterVolume))
-	AudioServer.set_bus_volume_db(_music_bus, linear2db(GameSettings.musicVolume))
+	print(GameSettings.master_volume)
+	print(GameSettings.music_volume)
+	_master_slider.value = GameSettings.master_volume
+	_music_slider.value = GameSettings.music_volume
+	AudioServer.set_bus_volume_db(_master_bus, linear2db(GameSettings.master_volume))
+	AudioServer.set_bus_volume_db(_music_bus, linear2db(GameSettings.music_volume))
 
 #func _on_MasterVolumeSlider_value_changed(value: float):
 #	print(value)
@@ -50,12 +50,12 @@ func _on_DoneButton_pressed():
 	if !_test_player.playing:
 		_test_player.stop()
 	print("I've been clicked D:")
-	GameSettings.masterVolume = _master_slider.value
-	GameSettings.musicVolume = _music_slider.value
+	GameSettings.master_volume = _master_slider.value
+	GameSettings.music_volume = _music_slider.value
 	GameSettings.save_settings()
 	print("game settings")
-	print(GameSettings.masterVolume)
-	print(GameSettings.musicVolume)
+	print(GameSettings.master_volume)
+	print(GameSettings.music_volume)
 	get_tree().change_scene("res://scenes/menu/MainMenu.tscn")
 
 

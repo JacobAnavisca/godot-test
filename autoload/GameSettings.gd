@@ -1,8 +1,8 @@
 extends Node
 
 
-var masterVolume: float = 1.0
-var musicVolume: float = 1.0
+var master_volume: float = 1.0
+var music_volume: float = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,8 +11,8 @@ func _ready():
 
 func save_settings():
 	var save_dict = {
-		"masterVolume" : masterVolume,
-		"musicVolume" : musicVolume
+		"MasterVolume" : master_volume,
+		"MusicVolume" : music_volume
 	}
 
 	var save_settings = File.new()
@@ -28,7 +28,7 @@ func load_settings():
 	save_settings.open("user://savesettings.save", File.READ)
 	var save_dict = save_settings.get_var(true)
 
-	masterVolume = save_dict.masterVolume
-	musicVolume = save_dict.musicVolume
+	master_volume = save_dict.MasterVolume
+	music_volume = save_dict.MusicVolume
 
 	save_settings.close()
