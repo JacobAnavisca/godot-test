@@ -12,7 +12,7 @@ batch:
       env:
         variables:
           GODOT_VERSION: "3.4.2"
-          EXPORT_TYPE: "Mac OSX"
+          EXPORT_TYPE: "MacOSX"
           EXPORT_FILE_NAME: "test.zip"
     # - identifier: "Android"
     #   env:
@@ -36,6 +36,8 @@ phases:
     commands:
       - .build-scripts/init_godot.sh
       - mkdir -v -m 777 -p /root/var/builds/
+      - echo $EXPORT_TYPE
+      - echo "$EXPORT_TYPE"
       - godot -v --export $EXPORT_TYPE ~/var/builds/$EXPORT_FILE_NAME
 
 artifacts:
