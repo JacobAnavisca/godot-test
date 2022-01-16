@@ -2,13 +2,13 @@ version: 0.2
 
 batch:
   build-list:
-    - identifier: "Linux/X11"
+    - identifier: "Linux_X11"
       env:
         variables:
           GODOT_VERSION: "3.4.2"
           EXPORT_TYPE: "Linux/X11"
           EXPORT_FILE_NAME: "test.x86_64"
-    - identifier: "Mac OSX"
+    - identifier: "Mac_OSX"
       env:
         variables:
           GODOT_VERSION: "3.4.2"
